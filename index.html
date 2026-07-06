@@ -9,15 +9,19 @@
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; scroll-behavior: smooth; }
         body { background: var(--bg); color: var(--text); padding-bottom: 50px; overflow-x: hidden; }
         
-        /* Nawigacja (Strona Główna) */
+        /* Nawigacja */
         .navbar { background: #000; padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #222; position: sticky; top: 0; z-index: 100; }
         .logo-nav { font-size: 20px; font-weight: bold; letter-spacing: 1px; }
         .logo-nav span { color: var(--acc); }
-        .nav-links a { color: var(--text); text-decoration: none; margin-left: 20px; font-size: 14px; text-transform: uppercase; transition: 0.2s; }
+        .nav-links a { color: var(--text); text-decoration: none; margin-left: 20px; font-size: 14px; text-transform: uppercase; transition: 0.2s; cursor: pointer; }
         .nav-links a:hover { color: var(--acc); }
 
+        /* Animacje przy scrollowaniu */
+        .reveal { opacity: 0; transform: translateY(40px); transition: all 0.8s ease-out; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
         /* Top & Hero */
-        .hero { text-align: center; padding: 80px 20px; background: radial-gradient(circle at center, #1a222c 0%, var(--bg) 70%); }
+        .hero { text-align: center; padding: 100px 20px 80px 20px; background: radial-gradient(circle at center, #1a222c 0%, var(--bg) 70%); }
         .hero h1 { font-size: 45px; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 15px; }
         .hero h1 span { color: var(--acc); text-shadow: 0 0 15px rgba(0,255,170,0.4); }
         .hero p { color: var(--mut); font-size: 18px; max-width: 600px; margin: 0 auto; line-height: 1.5; }
@@ -25,71 +29,61 @@
         .btn-big:hover { transform: scale(1.05); }
 
         /* Sekcje */
-        .section { max-width: 1000px; margin: 0 auto 60px auto; padding: 0 20px; }
-        .section-title { font-size: 26px; color: var(--acc); margin-bottom: 25px; text-transform: uppercase; text-align: center; border-bottom: 1px solid #333; padding-bottom: 15px; }
+        .section { max-width: 1100px; margin: 0 auto 70px auto; padding: 0 20px; }
+        .section-title { font-size: 28px; color: var(--acc); margin-bottom: 35px; text-transform: uppercase; text-align: center; border-bottom: 1px solid #333; padding-bottom: 15px; }
         
         /* Opinie (Karuzela CSS) */
         .reviews-container { overflow: hidden; width: 100%; position: relative; padding: 10px 0; }
         .reviews-track { display: flex; gap: 20px; width: max-content; animation: scrollReviews 25s linear infinite; will-change: transform; }
         .reviews-track:hover { animation-play-state: paused; }
-        
-        @keyframes scrollReviews {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); } 
-        }
-        
+        @keyframes scrollReviews { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
         .rev-card { background: var(--card); padding: 20px; border-radius: 8px; border: 1px solid #222; width: 300px; font-size: 14px; line-height: 1.5; flex-shrink: 0; }
         .stars { color: #ffd700; margin-bottom: 10px; font-size: 18px; }
 
         /* Pakiety */
-        .grid-3 { display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; align-items: stretch; }
-        .pkg-card { background: var(--card); border-top: 3px solid var(--acc); padding: 25px 20px; border-radius: 8px; width: 300px; text-align: center; border-left: 1px solid #222; border-right: 1px solid #222; border-bottom: 1px solid #222; display: flex; flex-direction: column; }
-        .pkg-card h3 { font-size: 22px; margin-bottom: 5px; }
-        .pkg-price { color: var(--acc); font-weight: bold; font-size: 20px; margin-bottom: 15px; }
-        .pkg-desc { font-size: 13px; color: #ccc; line-height: 1.6; text-align: left; flex-grow: 1; }
+        .grid-3 { display: flex; gap: 25px; flex-wrap: wrap; justify-content: center; align-items: stretch; }
+        .pkg-card { background: var(--card); border-top: 4px solid var(--acc); padding: 40px 30px; border-radius: 10px; width: 340px; text-align: center; border: 1px solid #222; border-top: 4px solid var(--acc); display: flex; flex-direction: column; transition: 0.3s; }
+        .pkg-card:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0, 255, 170, 0.15); }
+        .pkg-card h3 { font-size: 26px; margin-bottom: 10px; }
+        .pkg-price { color: var(--acc); font-weight: bold; font-size: 24px; margin-bottom: 20px; text-shadow: 0 0 10px rgba(0,255,170,0.3); }
+        .pkg-desc { font-size: 14px; color: #ccc; line-height: 1.7; text-align: left; flex-grow: 1; }
 
         /* Dodatki */
-        .addon-box { background: #111; border: 1px dashed var(--mut); padding: 15px; border-radius: 8px; text-align: center; width: 300px; font-size: 13px; }
-        .addon-box b { color: var(--acc); display: block; font-size: 16px; margin-bottom: 5px; }
+        .addon-box { background: #111; border: 1px dashed var(--mut); padding: 20px; border-radius: 8px; text-align: center; width: 340px; font-size: 14px; }
+        .addon-box b { color: var(--acc); display: block; font-size: 18px; margin-bottom: 8px; }
 
-        /* Neonowe Czyszczenie - Wzmocnione */
+        /* Neonowe Czyszczenie */
         @keyframes neonPulse {
             0% { box-shadow: 0 0 15px var(--acc), inset 0 0 10px var(--acc); border-color: var(--acc); }
             50% { box-shadow: 0 0 35px var(--acc), inset 0 0 20px var(--acc); border-color: #fff; }
             100% { box-shadow: 0 0 15px var(--acc), inset 0 0 10px var(--acc); border-color: var(--acc); }
         }
-        .neon-special {
-            width: 100%; max-width: 620px; text-align: left;
-            background: rgba(0, 255, 170, 0.1);
-            border: 3px solid var(--acc);
-            border-radius: 8px;
-            padding: 25px;
-            animation: neonPulse 1.5s infinite alternate;
-        }
-        .neon-title {
-            color: #fff; font-size: 24px; font-weight: 900; text-align: center; text-transform: uppercase; text-shadow: 0 0 15px var(--acc); margin-bottom: 10px; letter-spacing: 1px;
-        }
+        .neon-special { width: 100%; max-width: 700px; text-align: left; background: rgba(0, 255, 170, 0.1); border: 3px solid var(--acc); border-radius: 10px; padding: 30px; animation: neonPulse 1.5s infinite alternate; }
+        .neon-title { color: #fff; font-size: 26px; font-weight: 900; text-align: center; text-transform: uppercase; text-shadow: 0 0 15px var(--acc); margin-bottom: 12px; }
 
-        /* Formularz */
-        .form-container { background: var(--card); padding: 35px; border-radius: 10px; max-width: 550px; margin: 0 auto; border: 1px solid #222; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
-        input[type="text"], select { width: 100%; padding: 14px; margin-bottom: 15px; background: #090a0d; border: 1px solid #333; color: #fff; border-radius: 5px; outline: none; }
-        input[type="text"]:focus, select:focus { border-color: var(--acc); }
-        .check-row { display: flex; align-items: center; margin-bottom: 10px; font-size: 14px; cursor: pointer; color: #ccc; }
-        .check-row input { margin-right: 10px; accent-color: var(--acc); width: 18px; height: 18px; cursor: pointer; }
-        .total { text-align: center; font-size: 24px; font-weight: bold; margin: 25px 0; color: #fff; }
-        .total span { color: var(--acc); }
-        .btn-submit { width: 100%; padding: 16px; background: var(--acc); color: #000; border: none; font-weight: bold; font-size: 16px; border-radius: 5px; cursor: pointer; text-transform: uppercase; transition: 0.2s; }
-        .btn-submit:hover { background: #00e699; transform: translateY(-2px); }
-
-        /* Modal (Wyskakujące okienko z kodem) */
-        .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 1000; align-items: center; justify-content: center; backdrop-filter: blur(5px); }
-        .modal-content { background: var(--card); border: 2px solid var(--acc); padding: 40px; border-radius: 12px; text-align: center; max-width: 450px; width: 90%; box-shadow: 0 0 30px rgba(0,255,170,0.2); }
+        /* WSPÓLNY KOD DLA MODALI (ZAMÓWIENIE + SUKCES) */
+        .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 1000; align-items: center; justify-content: center; backdrop-filter: blur(5px); padding: 20px; }
+        
+        /* Modal Sukcesu */
+        .modal-content { background: var(--card); border: 2px solid var(--acc); padding: 40px; border-radius: 12px; text-align: center; max-width: 450px; width: 100%; box-shadow: 0 0 30px rgba(0,255,170,0.2); }
         .modal-content h2 { color: var(--acc); margin-bottom: 10px; text-transform: uppercase; }
-        .modal-content p { color: #ccc; margin-bottom: 20px; font-size: 15px; }
         .order-code-display { background: #000; color: #fff; font-size: 32px; font-weight: bold; padding: 20px; border-radius: 8px; border: 1px dashed var(--acc); letter-spacing: 3px; user-select: all; margin-bottom: 25px; }
         .discord-btn { display: inline-block; background: #5865F2; color: #fff; text-decoration: none; padding: 12px 30px; font-weight: bold; border-radius: 5px; text-transform: uppercase; transition: 0.2s; width: 100%; margin-bottom: 15px; }
-        .discord-btn:hover { background: #4752C4; }
-        .close-modal { background: transparent; color: var(--mut); border: none; cursor: pointer; text-decoration: underline; font-size: 14px; }
+        
+        /* Modal Formularza (Złóż zamówienie) */
+        .form-container { background: var(--card); padding: 40px; border-radius: 10px; width: 100%; max-width: 600px; border: 1px solid #222; box-shadow: 0 10px 40px rgba(0,0,0,0.9); position: relative; max-height: 90vh; overflow-y: auto; }
+        .close-form { position: absolute; top: 15px; right: 20px; background: transparent; color: var(--mut); border: none; font-size: 26px; font-weight: bold; cursor: pointer; transition: 0.2s; }
+        .close-form:hover { color: var(--acc); }
+        
+        input[type="text"], select, textarea { width: 100%; padding: 15px; margin-bottom: 15px; background: #090a0d; border: 1px solid #333; color: #fff; border-radius: 6px; outline: none; font-size: 14px; }
+        input[type="text"]:focus, select:focus, textarea:focus { border-color: var(--acc); }
+        textarea { resize: vertical; min-height: 80px; }
+        .check-row { display: flex; align-items: center; margin-bottom: 12px; font-size: 15px; cursor: pointer; color: #ccc; }
+        .check-row input { margin-right: 12px; accent-color: var(--acc); width: 20px; height: 20px; cursor: pointer; }
+        .total { text-align: center; font-size: 26px; font-weight: bold; margin: 20px 0; color: #fff; }
+        .total span { color: var(--acc); }
+        .btn-submit { width: 100%; padding: 18px; background: var(--acc); color: #000; border: none; font-weight: bold; font-size: 16px; border-radius: 6px; cursor: pointer; text-transform: uppercase; transition: 0.2s; }
+        .btn-submit:hover { background: #00e699; transform: translateY(-3px); box-shadow: 0 5px 20px rgba(0,255,170,0.4); }
     </style>
 </head>
 <body>
@@ -99,19 +93,19 @@
         <div class="nav-links">
             <a href="#home">Strona Główna</a>
             <a href="#pakiety">Oferta</a>
-            <a href="#zamowienie">Zamów</a>
+            <a onclick="openOrderModal()">Zamów</a>
             <a href="https://discord.gg/ybbsFvWnU" target="_blank" style="color: #5865F2; font-weight: bold;">DISCORD</a>
         </div>
     </nav>
 
-    <div class="hero" id="home">
+    <div class="hero reveal" id="home">
         <h1>Wyciskamy <span>MAX FPS</span> z Twojego PC</h1>
         <p>Liderzy profesjonalnej optymalizacji sprzętu i oprogramowania. Zmniejszamy input lag, obniżamy temperatury i gwarantujemy płynną rozgrywkę w każdej grze.</p>
-        <button class="btn-big" onclick="document.getElementById('zamowienie').scrollIntoView()">Złóż zamówienie</button>
+        <button class="btn-big" onclick="openOrderModal()">Złóż zamówienie</button>
     </div>
 
-    <div class="section">
-        <div class="section-title">Opinie zadowolonych klientów (21)</div>
+    <div class="section reveal">
+        <div class="section-title">Opinie klientów (21)</div>
         <div class="reviews-container">
             <div class="reviews-track">
                 <div class="rev-card">
@@ -119,20 +113,20 @@
                     "Mega różnica w klatkach, polecam każdemu! Zero lagów."<br><br>- <i>Mati</i>
                 </div>
                 <div class="rev-card">
+                    <div class="stars">★★★★☆</div>
+                    "Chlopaki zrobili robote, fps podskoczyly o 60. polecam mocno hyba najlepsza optymalizajca na rynku!!!"<br><br>- <i>Kuba</i>
+                </div>
+                <div class="rev-card">
                     <div class="stars">★★★★★</div>
-                    "Szybka realizacja i świetny kontakt przez Discord. W CS2 kosmos."<br><br>- <i>Krzychu</i>
+                    "Polecam."<br><br>- <i>Anonim</i>
+                </div>
+                <div class="rev-card">
+                    <div class="stars">★★★★★</div>
+                    "mialem spadki w csie i mc, po optymalizacji 300fps stale. git, pozdro"<br><br>- <i>Kacper</i>
                 </div>
                 <div class="rev-card">
                     <div class="stars">★★★★☆</div>
-                    "Temperatury spadły, wszystko działa stabilniej. Dobra robota."<br><br>- <i>Dawid</i>
-                </div>
-                <div class="rev-card">
-                    <div class="stars">★★★★★</div>
-                    "Undervolting przeprowadzony mistrzowsko, laptop w końcu nie parzy."<br><br>- <i>Tomek</i>
-                </div>
-                <div class="rev-card">
-                    <div class="stars">★★★★★</div>
-                    "Wgrali mi własny system, FPSy skoczyły o 40%. Polecam chłopaków!"<br><br>- <i>Kacper</i>
+                    "Wszystko dziala jak nalezy, temperatury mniejsze o 15 stopni, dzieki wielkie."<br><br>- <i>Dawid</i>
                 </div>
                 
                 <div class="rev-card">
@@ -140,26 +134,26 @@
                     "Mega różnica w klatkach, polecam każdemu! Zero lagów."<br><br>- <i>Mati</i>
                 </div>
                 <div class="rev-card">
+                    <div class="stars">★★★★☆</div>
+                    "Chlopaki zrobili robote, fps podskoczyly o 60. polecam mocno hyba najlepsza optymalizajca na rynku!!!"<br><br>- <i>Kuba</i>
+                </div>
+                <div class="rev-card">
                     <div class="stars">★★★★★</div>
-                    "Szybka realizacja i świetny kontakt przez Discord. W CS2 kosmos."<br><br>- <i>Krzychu</i>
+                    "Polecam."<br><br>- <i>Anonim</i>
+                </div>
+                <div class="rev-card">
+                    <div class="stars">★★★★★</div>
+                    "mialem spadki w csie i mc, po optymalizacji 300fps stale. git, pozdro"<br><br>- <i>Kacper</i>
                 </div>
                 <div class="rev-card">
                     <div class="stars">★★★★☆</div>
-                    "Temperatury spadły, wszystko działa stabilniej. Dobra robota."<br><br>- <i>Dawid</i>
-                </div>
-                <div class="rev-card">
-                    <div class="stars">★★★★★</div>
-                    "Undervolting przeprowadzony mistrzowsko, laptop w końcu nie parzy."<br><br>- <i>Tomek</i>
-                </div>
-                <div class="rev-card">
-                    <div class="stars">★★★★★</div>
-                    "Wgrali mi własny system, FPSy skoczyły o 40%. Polecam chłopaków!"<br><br>- <i>Kacper</i>
+                    "Wszystko dziala jak nalezy, temperatury mniejsze o 15 stopni, dzieki wielkie."<br><br>- <i>Dawid</i>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="section" id="pakiety">
+    <div class="section reveal" id="pakiety">
         <div class="section-title">Nasze Pakiety</div>
         <div class="grid-3">
             <div class="pkg-card">
@@ -180,7 +174,7 @@
         </div>
     </div>
 
-    <div class="section">
+    <div class="section reveal">
         <div class="section-title">Opcjonalne Dodatki do pakietu</div>
         <div class="grid-3">
             <div class="addon-box"><b>45 PLN</b>Zaawansowana optymalizacja BIOS</div>
@@ -189,8 +183,8 @@
             
             <div class="neon-special">
                 <div class="neon-title">TWÓJ KOMPUTER ZWALNIA? MOŻE TRZEBA GO WYCZYŚCIĆ!</div>
-                <b style="display: block; text-align: center; color: var(--acc); font-size: 22px; margin-bottom: 10px; text-shadow: 0 0 8px var(--acc);">TYLKO 10 PLN</b> 
-                <div style="text-align: center; margin-bottom: 15px; color: #eee; font-weight: 500;">Zależnie od Twoich preferencji otrzymujesz plik, który wykona za ciebie czyszczenie komputera z telemetrii lub pełną pomoc informatyka.</div>
+                <b style="display: block; text-align: center; color: var(--acc); font-size: 24px; margin-bottom: 10px; text-shadow: 0 0 8px var(--acc);">TYLKO 10 PLN</b> 
+                <div style="text-align: center; margin-bottom: 15px; color: #eee; font-weight: 500; font-size: 15px;">Zależnie od Twoich preferencji otrzymujesz plik, który wykona za ciebie czyszczenie komputera z telemetrii lub pełną pomoc informatyka.</div>
                 
                 <details style="cursor: pointer; background: rgba(0,0,0,0.6); padding: 15px; border-radius: 5px; border: 1px solid #444;">
                     <summary style="color: var(--acc); font-weight: bold; outline: none; text-align: center; font-size: 15px;">Co jest dokładnie czyszczone? (KLIKNIJ, ABY ROZWINĄĆ)</summary>
@@ -198,28 +192,27 @@
                         <li>Czyszczenie plików tymczasowych i cache.</li>
                         <li>Usuwanie zbędnych programów (za zgodą klienta).</li>
                         <li>Wyłączenie niepotrzebnych programów uruchamianych przy starcie systemu.</li>
-                        <li>Aktualizacja systemu Windows i sterowników (jeśli klient chce).</li>
+                        <li>Aktualizacja systemu Windows i sterowników.</li>
                         <li>Sprawdzenie kondycji dysku i podstawowa diagnostyka.</li>
                         <li>Skanowanie pod kątem złośliwego oprogramowania.</li>
                         <li>Zwolnienie miejsca na dysku.</li>
                         <li>Optymalizacja ustawień zasilania pod wydajność.</li>
-                        <li>Czyszczenie przeglądarek (cache, niepotrzebne rozszerzenia – za zgodą klienta).</li>
-                        <li>Sprawdzenie temperatur podzespołów.</li>
-                        <li>Weryfikacja ilości wolnej pamięci RAM podczas pracy.</li>
-                        <li>Usunięcie zbędnych wpisów z autostartu.</li>
-                        <li>Raport z wykonanych zmian.</li>
+                        <li>Czyszczenie przeglądarek i sprawdzenie temperatur.</li>
+                        <li>Weryfikacja ilości wolnej pamięci RAM i autostartu.</li>
                     </ul>
                 </details>
             </div>
         </div>
     </div>
 
-    <div class="section" id="zamowienie">
-        <div class="section-title">Złóż Zamówienie</div>
+    <div id="orderModal" class="modal-overlay">
         <div class="form-container">
+            <button class="close-form" onclick="closeOrderModal()">×</button>
+            <div class="section-title" style="border:none; margin-bottom: 20px;">Złóż Zamówienie</div>
+            
             <form id="orderForm">
-                <input type="text" id="discord" placeholder="Twój nick na Discord (np. kamilos123)" required>
-                <input type="text" id="specs" placeholder="Podaj sprzęt (np. i5-11400F, RTX 3060, 16GB RAM)" required>
+                <input type="text" id="discord" placeholder="Twój nick na Discord (np. kamilos123)" minlength="4" required>
+                <input type="text" id="specs" placeholder="Podaj sprzęt (np. i5-11400F, RTX 3060, 16GB RAM)" minlength="4" required>
                 
                 <select id="package" onchange="calc()">
                     <option value="40" data-name="Pakiet Standard">Pakiet Standard - 40 PLN</option>
@@ -227,11 +220,13 @@
                     <option value="80" data-name="Pakiet Expert">Pakiet Expert - 80 PLN</option>
                 </select>
 
-                <div style="margin-bottom: 10px; color: var(--mut); font-size: 14px; text-transform: uppercase; font-weight: bold;">Wybierz dodatki:</div>
+                <div style="margin-bottom: 12px; color: var(--mut); font-size: 14px; text-transform: uppercase; font-weight: bold;">Wybierz dodatki:</div>
                 <label class="check-row"><input type="checkbox" class="addon" value="45" data-name="Zaawansowana optymalizacja BIOS" onchange="calc()"> Zaawansowana optymalizacja BIOS (+45 PLN)</label>
                 <label class="check-row"><input type="checkbox" class="addon" value="10" data-name="Instalacja systemu FPS Boost" onchange="calc()"> System podwyższający FPS (+10 PLN)</label>
                 <label class="check-row"><input type="checkbox" class="addon" value="10" data-name="Format + Głęboka optymalizacja" onchange="calc()"> Format + Głęboka optymalizacja (+10 PLN)</label>
                 <label class="check-row"><input type="checkbox" class="addon" value="10" data-name="Skrypt czyszczący / Pomoc informatyka" onchange="calc()"> Skrypt czyszczący z telemetrii / Pomoc (+10 PLN)</label>
+
+                <textarea id="notes" placeholder="Opisz dodatkowy problem z komputerem (Opcjonalne)"></textarea>
 
                 <div class="total">RAZEM: <span id="totalPrice">40 PLN</span></div>
                 <button type="submit" class="btn-submit">Generuj kod i złóż zamówienie</button>
@@ -242,38 +237,46 @@
     <div id="successModal" class="modal-overlay">
         <div class="modal-content">
             <h2>Sukces!</h2>
-            <p>Twoje zamówienie zostało przekazane do systemu. Skopiuj swój unikalny kod zamówienia:</p>
+            <p>Twoje zamówienie zostało przekazane. Skopiuj swój unikalny kod zamówienia:</p>
             <div id="generatedCode" class="order-code-display">HYP-XXXXXX</div>
-            <p>Wejdź na nasz serwer Discord, <b>otwórz ticket</b> i wklej tam powyższy kod, abyśmy mogli rozpocząć realizację!</p>
+            <p>Wejdź na nasz serwer Discord, <b>otwórz ticket</b> i wklej tam powyższy kod!</p>
             <a href="https://discord.gg/ybbsFvWnU" target="_blank" class="discord-btn">Przejdź na Discord</a>
-            <button class="close-modal" onclick="closeModal()">Zamknij okienko</button>
+            <button class="close-modal" style="background:transparent; color:var(--mut); border:none; cursor:pointer;" onclick="closeSuccessModal()">Zamknij okienko</button>
         </div>
     </div>
 
     <script>
-        // Funkcja licząca sumę
+        // Animacje Scroll Reveal
+        document.addEventListener("DOMContentLoaded", function() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('active'); });
+            }, { threshold: 0.15 });
+
+            document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+            setTimeout(() => { document.getElementById('home').classList.add('active'); }, 100);
+        });
+
+        // Obsługa wyskakującego formularza (Modal)
+        function openOrderModal() { document.getElementById('orderModal').style.display = 'flex'; }
+        function closeOrderModal() { document.getElementById('orderModal').style.display = 'none'; }
+        function closeSuccessModal() { document.getElementById('successModal').style.display = 'none'; }
+
+        // Kalkulator sumy
         function calc() {
             let total = parseInt(document.getElementById('package').value);
             document.querySelectorAll('.addon:checked').forEach(cb => total += parseInt(cb.value));
             document.getElementById('totalPrice').innerText = total + ' PLN';
         }
 
-        // Generator losowego ID zamówienia
+        // Generator ID
         function generateOrderID() {
             const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
             let result = '';
-            for (let i = 0; i < 5; i++) {
-                result += chars.charAt(Math.floor(Math.random() * chars.length));
-            }
+            for (let i = 0; i < 5; i++) result += chars.charAt(Math.floor(Math.random() * chars.length));
             return 'HYP-' + result;
         }
 
-        // Zamykanie modala
-        function closeModal() {
-            document.getElementById('successModal').style.display = 'none';
-        }
-
-        // Obsługa wysyłania formularza
+        // Wysyłanie formularza
         document.getElementById('orderForm').addEventListener('submit', function(e) {
             e.preventDefault();
             const btn = document.querySelector('.btn-submit');
@@ -282,22 +285,22 @@
 
             const url = 'https://discord.com/api/webhooks/1523617715477020742/IvljwYTbNDMhp4G-BsT0jCD06a5wLj2P782M39VTj6Aoi64HHb5Oxl_xlPEFxMpw36CN';
             
-            // Generowanie kodu dla tego konkretnego zamówienia
             const orderID = generateOrderID();
-            
             const pSel = document.getElementById('package');
+            const notes = document.getElementById('notes').value || 'Brak dodatkowego problemu';
             let addons = Array.from(document.querySelectorAll('.addon:checked')).map(cb => `+ ${cb.getAttribute('data-name')} (${cb.value} PLN)`).join('\n') || '*Brak dodatków*';
             
             const payload = { embeds: [{
                 title: "🚨 NOWE ZAMÓWIENIE: " + orderID, 
                 color: 65280,
-                description: "Klient wygenerował kod na stronie. Oczekuj, aż otworzy ticket z tym kodem!",
+                description: "Klient wygenerował kod na stronie. Oczekuj na Discordzie!",
                 fields: [
                     { name: "KOD ZAMÓWIENIA", value: `\`${orderID}\``, inline: false },
                     { name: "Discord Klienta", value: document.getElementById('discord').value, inline: true },
                     { name: "Sprzęt", value: document.getElementById('specs').value, inline: true },
                     { name: "Wybrany Pakiet", value: pSel.options[pSel.selectedIndex].getAttribute('data-name') + ` (${pSel.value} PLN)`, inline: false },
                     { name: "Wybrane Dodatki", value: addons, inline: false },
+                    { name: "Dodatkowy Problem", value: notes, inline: false },
                     { name: "Łączna Kwota", value: "**" + document.getElementById('totalPrice').innerText + "**", inline: false }
                 ]
             }]};
@@ -305,8 +308,9 @@
             fetch(url, { method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(payload) })
             .then(r => { 
                 if(r.ok) { 
+                    closeOrderModal(); // Zamyka formularz
                     document.getElementById('generatedCode').innerText = orderID;
-                    document.getElementById('successModal').style.display = 'flex';
+                    document.getElementById('successModal').style.display = 'flex'; // Otwiera okno sukcesu
                     document.getElementById('orderForm').reset(); 
                     calc(); 
                 } else {
