@@ -3,195 +3,171 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HyperOPT | Profesjonalna Optymalizacja PC</title>
+    <title>HyperOPT | Optymalizacja PC</title>
     <style>
-        :root {
-            --bg-color: #0d0e12;
-            --card-bg: #161920;
-            --accent: #00ffaa;
-            --accent-glow: rgba(0, 255, 170, 0.3);
-            --text: #f5f6f9;
-            --text-muted: #8f9cae;
-            --border: rgba(255, 255, 255, 0.1);
-        }
-
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Roboto, sans-serif; }
-        body { background-color: var(--bg-color); color: var(--text); display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; padding: 20px; }
-        .wrapper { max-width: 500px; width: 100%; }
-
-        .card { background: var(--card-bg); border: 1px solid var(--border); border-top: 4px solid var(--accent); border-radius: 12px; padding: 35px 30px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); }
-        .logo { font-size: 32px; font-weight: 800; letter-spacing: 2px; color: var(--text); text-transform: uppercase; text-align: center; margin-bottom: 5px; }
-        .logo span { color: var(--accent); text-shadow: 0 0 10px var(--accent-glow); }
-        .tagline { color: var(--text-muted); font-size: 14px; text-align: center; margin-bottom: 30px; text-transform: uppercase; letter-spacing: 1px; }
-
-        .form-group { margin-bottom: 20px; }
-        label { display: block; font-size: 12px; text-transform: uppercase; color: var(--text-muted); margin-bottom: 8px; font-weight: 600; letter-spacing: 0.5px; }
-        input[type="text"], select, textarea { width: 100%; padding: 14px; background: #090a0d; border: 1px solid var(--border); border-radius: 6px; color: #fff; font-size: 14px; transition: 0.2s; }
-        input[type="text"]:focus, select:focus, textarea:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 8px var(--accent-glow); }
-        textarea { resize: none; height: 70px; }
-
-        /* Style dla dodatków (Checkboxy) */
-        .addons-box { background: rgba(0, 0, 0, 0.2); padding: 15px; border-radius: 6px; border: 1px solid var(--border); }
-        .checkbox-row { display: flex; align-items: center; margin-bottom: 12px; font-size: 13px; color: #ccc; cursor: pointer; }
-        .checkbox-row:last-child { margin-bottom: 0; }
-        .checkbox-row input[type="checkbox"] { margin-right: 12px; cursor: pointer; accent-color: var(--accent); width: 18px; height: 18px; }
-        .price-badge { margin-left: auto; color: var(--accent); font-weight: bold; background: rgba(0, 255, 170, 0.1); padding: 2px 6px; border-radius: 4px; font-size: 12px; }
-
-        .total-price { text-align: center; font-size: 20px; font-weight: bold; margin: 25px 0 10px 0; color: #fff; }
-        .total-price span { color: var(--accent); font-size: 24px; text-shadow: 0 0 8px var(--accent-glow); }
-
-        button { width: 100%; padding: 16px; background: var(--accent); color: #000; border: none; border-radius: 6px; font-size: 15px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; cursor: pointer; transition: 0.3s; box-shadow: 0 4px 15px var(--accent-glow); }
-        button:hover { background: #00e699; transform: translateY(-2px); }
+        :root { --bg: #0d0e12; --card: #161920; --acc: #00ffaa; --text: #f5f6f9; --mut: #8f9cae; }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; scroll-behavior: smooth; }
+        body { background: var(--bg); color: var(--text); padding-bottom: 50px; }
         
-        /* Opisy pakietów w formie małego tekstu */
-        .pkg-desc { font-size: 11px; color: #666; margin-top: 4px; line-height: 1.4; }
+        /* Top & Hero */
+        .top-bar { background: #000; padding: 10px 20px; display: flex; justify-content: space-between; font-size: 14px; border-bottom: 1px solid #222; }
+        .top-bar a { color: var(--acc); text-decoration: none; font-weight: bold; }
+        .hero { text-align: center; padding: 60px 20px; }
+        .hero h1 { font-size: 40px; text-transform: uppercase; letter-spacing: 2px; }
+        .hero h1 span { color: var(--acc); text-shadow: 0 0 10px rgba(0,255,170,0.3); }
+        .btn-big { background: var(--acc); color: #000; padding: 15px 40px; font-size: 18px; font-weight: bold; border: none; border-radius: 8px; cursor: pointer; margin-top: 20px; text-transform: uppercase; transition: 0.3s; box-shadow: 0 0 15px rgba(0,255,170,0.4); }
+        .btn-big:hover { transform: scale(1.05); }
+
+        /* Sekcje */
+        .section { max-width: 900px; margin: 0 auto 40px auto; padding: 0 20px; }
+        .section-title { font-size: 22px; color: var(--acc); margin-bottom: 15px; text-transform: uppercase; text-align: center; border-bottom: 1px solid #333; padding-bottom: 10px; }
+        
+        /* Opinie */
+        .reviews { display: flex; gap: 15px; flex-wrap: wrap; justify-content: center; }
+        .rev-card { background: var(--card); padding: 15px; border-radius: 8px; border: 1px solid #222; width: 280px; font-size: 14px; }
+        .stars { color: #ffd700; margin-bottom: 5px; }
+
+        /* Pakiety (Hover) */
+        .grid-3 { display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; }
+        .pkg-card { background: var(--card); border-top: 3px solid var(--acc); padding: 20px; border-radius: 8px; width: 280px; text-align: center; position: relative; overflow: hidden; cursor: pointer; }
+        .pkg-card h3 { font-size: 20px; margin-bottom: 10px; }
+        .pkg-desc { font-size: 13px; color: var(--mut); opacity: 0; transform: translateY(20px); transition: 0.3s; position: absolute; bottom: 0; left: 0; width: 100%; background: rgba(0,0,0,0.9); padding: 20px 15px; height: 100%; display: flex; align-items: center; justify-content: center; text-align: center; }
+        .pkg-card:hover .pkg-desc { opacity: 1; transform: translateY(0); }
+
+        /* Dodatki */
+        .addon-box { background: #111; border: 1px dashed var(--mut); padding: 15px; border-radius: 8px; text-align: center; width: 280px; font-size: 13px; }
+        .addon-box b { color: var(--acc); display: block; font-size: 16px; margin-bottom: 5px; }
+
+        /* Formularz */
+        .form-container { background: var(--card); padding: 30px; border-radius: 10px; max-width: 500px; margin: 0 auto; border: 1px solid #222; }
+        input[type="text"], select { width: 100%; padding: 12px; margin-bottom: 15px; background: #090a0d; border: 1px solid #333; color: #fff; border-radius: 5px; }
+        .check-row { display: flex; align-items: center; margin-bottom: 10px; font-size: 14px; }
+        .check-row input { margin-right: 10px; accent-color: var(--acc); width: 16px; height: 16px; }
+        .total { text-align: center; font-size: 24px; font-weight: bold; margin: 20px 0; color: var(--acc); }
+        .btn-submit { width: 100%; padding: 15px; background: var(--acc); border: none; font-weight: bold; font-size: 16px; border-radius: 5px; cursor: pointer; text-transform: uppercase; }
     </style>
 </head>
 <body>
 
-    <div class="wrapper">
-        <div class="card">
-            <div class="logo">Hyper<span>OPT</span></div>
-            <div class="tagline">Zamówienie Usługi</div>
+    <div class="top-bar">
+        <div>O Nas: Liderzy optymalizacji PC 🚀</div>
+        <div>
+            <a href="https://discord.gg/ybbsFvWnU" target="_blank">DISCORD</a> | 
+            <span style="color: var(--mut)">SOCIALS: SOON</span>
+        </div>
+    </div>
 
+    <div class="hero">
+        <h1>Hyper<span>OPT</span></h1>
+        <p style="color: var(--mut); margin-top: 10px;">Maximum FPS. Lowest Latency.</p>
+        <button class="btn-big" onclick="document.getElementById('order').scrollIntoView()">Złóż zamówienie</button>
+    </div>
+
+    <div class="section">
+        <div class="section-title">Opinie zadowolonych klientów (21)</div>
+        <div class="reviews">
+            <div class="rev-card">
+                <div class="stars">★★★★★</div>
+                "Mega różnica w klatkach, polecam każdemu! Zero lagów." - <i>Mati</i>
+            </div>
+            <div class="rev-card">
+                <div class="stars">★★★★★</div>
+                "Szybka realizacja i świetny kontakt przez Discord." - <i>Krzychu</i>
+            </div>
+            <div class="rev-card">
+                <div class="stars">★★★★☆</div>
+                "Temperatury spadły, wszystko działa stabilniej. Dobra robota." - <i>Dawid</i>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">Nasze Pakiety (Najedź, aby przeczytać)</div>
+        <div class="grid-3">
+            <div class="pkg-card">
+                <h3>Standard</h3>
+                <div style="color: var(--acc); font-weight: bold;">25 PLN</div>
+                <div class="pkg-desc">Podstawowa optymalizacja, usunięcie telemetrii Windows, czyszczenie plików temp i ogólne przyspieszenie systemu.</div>
+            </div>
+            <div class="pkg-card">
+                <h3>Pro</h3>
+                <div style="color: var(--acc); font-weight: bold;">40 PLN</div>
+                <div class="pkg-desc">Pakiet Standard + specjalne ustawienia wentylatorów, CPU, GPU + darmowa optymalizacja pod gry, w które grasz.</div>
+            </div>
+            <div class="pkg-card">
+                <h3>Expert</h3>
+                <div style="color: var(--acc); font-weight: bold;">80 PLN</div>
+                <div class="pkg-desc">Pakiet Pro + undervolting GPU, rozszerzona optymalizacja Win10/11, aktualizacja sterowników, podkręcenie RAM i naprawa dowolnego problemu.</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">Dodatki do pakietów</div>
+        <div class="grid-3">
+            <div class="addon-box"><b>35 PLN</b>Zaawansowana optymalizacja BIOS</div>
+            <div class="addon-box"><b>20 PLN</b>Instalacja custom OS (FPS Boost)</div>
+            <div class="addon-box"><b>20 PLN</b>Format + głęboka optymalizacja</div>
+        </div>
+    </div>
+
+    <div class="section" id="order">
+        <div class="section-title">Formularz Zamówienia</div>
+        <div class="form-container">
             <form id="orderForm">
-                <div class="form-group">
-                    <label>Twój Discord</label>
-                    <input type="text" id="discord" placeholder="np. adrian_opt" required>
-                </div>
+                <input type="text" id="discord" placeholder="Twój Discord (np. user123)" required>
+                <input type="text" id="specs" placeholder="Specyfikacja (CPU, GPU, RAM)" required>
+                
+                <select id="package" onchange="calc()">
+                    <option value="25" data-name="Pakiet Standard">Pakiet Standard - 25 PLN</option>
+                    <option value="40" data-name="Pakiet Pro">Pakiet Pro - 40 PLN</option>
+                    <option value="80" data-name="Pakiet Expert">Pakiet Expert - 80 PLN</option>
+                </select>
 
-                <div class="form-group">
-                    <label>Specyfikacja PC (CPU, GPU, RAM)</label>
-                    <input type="text" id="specs" placeholder="np. i7-13620H, RTX 4070, 32GB RAM" required>
-                </div>
+                <div style="margin-bottom: 15px; color: var(--mut); font-size: 14px;">Wybierz dodatki:</div>
+                <label class="check-row"><input type="checkbox" class="addon" value="35" data-name="Optymalizacja BIOS" onchange="calc()"> BIOS (+35 PLN)</label>
+                <label class="check-row"><input type="checkbox" class="addon" value="20" data-name="Custom OS" onchange="calc()"> Custom OS (+20 PLN)</label>
+                <label class="check-row"><input type="checkbox" class="addon" value="20" data-name="Format" onchange="calc()"> Format (+20 PLN)</label>
 
-                <div class="form-group">
-                    <label>Wybierz Pakiet Główny</label>
-                    <select id="package" onchange="calculateTotal()">
-                        <option value="25" data-name="Pakiet Standard">Pakiet Standard - 25 PLN</option>
-                        <option value="40" data-name="Pakiet Pro">Pakiet Pro - 40 PLN</option>
-                        <option value="80" data-name="Pakiet Expert">Pakiet Expert - 80 PLN</option>
-                    </select>
-                    <div id="pkg-info" class="pkg-desc">Usuwanie telemetrii, czyszczenie temp, ogólne przyspieszenie systemu.</div>
-                </div>
-
-                <div class="form-group">
-                    <label>Dodatki (Opcjonalnie)</label>
-                    <div class="addons-box">
-                        <label class="checkbox-row">
-                            <input type="checkbox" class="addon" value="35" data-name="Zaawansowana optymalizacja BIOS" onchange="calculateTotal()">
-                            Optymalizacja BIOS
-                            <span class="price-badge">+35 PLN</span>
-                        </label>
-                        <label class="checkbox-row">
-                            <input type="checkbox" class="addon" value="20" data-name="Custom OS (AtlasOS/Revios)" onchange="calculateTotal()">
-                            Instalacja systemu (AtlasOS/ReviOS)
-                            <span class="price-badge">+20 PLN</span>
-                        </label>
-                        <label class="checkbox-row">
-                            <input type="checkbox" class="addon" value="20" data-name="Format + Głęboka Optymalizacja" onchange="calculateTotal()">
-                            Format + Głęboka optymalizacja
-                            <span class="price-badge">+20 PLN</span>
-                        </label>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label>Dodatkowe uwagi / Główne problemy</label>
-                    <textarea id="notes" placeholder="Opisz swój problem..."></textarea>
-                </div>
-
-                <div class="total-price">RAZEM: <span id="priceDisplay">25 PLN</span></div>
-
-                <button type="submit">Wyślij Zgłoszenie</button>
+                <div class="total" id="totalPrice">25 PLN</div>
+                <button type="submit" class="btn-submit">Wyślij Zgłoszenie</button>
             </form>
         </div>
     </div>
 
     <script>
-        // Opisy pakietów do podglądu na żywo
-        const descriptions = {
-            "25": "Podstawowa optymalizacja, usunięcie telemetrii Windows, czyszczenie plików temp i ogólne przyspieszenie systemu.",
-            "40": "Pakiet Standard + specjalne ustawienia wentylatorów, CPU, GPU + darmowa optymalizacja pod wybrane gry.",
-            "80": "Pakiet Pro + undervolting GPU, rozszerzona optymalizacja Win10/11, aktualizacja sterowników, OC RAM i naprawa dowolnego problemu."
-        };
-
-        function calculateTotal() {
-            const pkgSelect = document.getElementById('package');
-            let total = parseInt(pkgSelect.value);
-            
-            // Zmiana opisu pakietu
-            document.getElementById('pkg-info').innerText = descriptions[pkgSelect.value];
-
-            // Dodawanie cen z checkboxów
-            document.querySelectorAll('.addon:checked').forEach(cb => {
-                total += parseInt(cb.value);
-            });
-
-            document.getElementById('priceDisplay').innerText = total + ' PLN';
+        function calc() {
+            let total = parseInt(document.getElementById('package').value);
+            document.querySelectorAll('.addon:checked').forEach(cb => total += parseInt(cb.value));
+            document.getElementById('totalPrice').innerText = total + ' PLN';
         }
 
         document.getElementById('orderForm').addEventListener('submit', function(e) {
             e.preventDefault();
-            const btn = e.target.querySelector('button');
+            const btn = document.querySelector('.btn-submit');
+            btn.innerText = 'WYSYŁANIE...';
             btn.disabled = true;
-            btn.innerText = 'Wysyłanie...';
 
-            const webhookUrl = 'https://discord.com/api/webhooks/1523617715477020742/IvljwYTbNDMhp4G-BsT0jCD06a5wLj2P782M39VTj6Aoi64HHb5Oxl_xlPEFxMpw36CN';
+            const url = 'https://discord.com/api/webhooks/1523617715477020742/IvljwYTbNDMhp4G-BsT0jCD06a5wLj2P782M39VTj6Aoi64HHb5Oxl_xlPEFxMpw36CN';
             
-            const discord = document.getElementById('discord').value;
-            const specs = document.getElementById('specs').value;
-            const notes = document.getElementById('notes').value || 'Brak uwag';
+            const pSel = document.getElementById('package');
+            let addons = Array.from(document.querySelectorAll('.addon:checked')).map(cb => `+ ${cb.getAttribute('data-name')} (${cb.value} PLN)`).join('\n') || 'Brak';
             
-            // Pobieranie nazwy pakietu
-            const pkgSelect = document.getElementById('package');
-            const pkgName = pkgSelect.options[pkgSelect.selectedIndex].getAttribute('data-name');
-            const pkgPrice = pkgSelect.value;
+            const payload = { embeds: [{
+                title: "🚀 ZAMÓWIENIE", color: 65280,
+                fields: [
+                    { name: "Discord", value: document.getElementById('discord').value, inline: true },
+                    { name: "Sprzęt", value: document.getElementById('specs').value, inline: true },
+                    { name: "Pakiet", value: pSel.options[pSel.selectedIndex].getAttribute('data-name') + ` (${pSel.value} PLN)` },
+                    { name: "Dodatki", value: addons },
+                    { name: "Suma", value: document.getElementById('totalPrice').innerText }
+                ]
+            }]};
 
-            // Pobieranie dodatków
-            let addonsArr = [];
-            document.querySelectorAll('.addon:checked').forEach(cb => {
-                addonsArr.push(`+ ${cb.getAttribute('data-name')} (${cb.value} PLN)`);
-            });
-            const addonsText = addonsArr.length > 0 ? addonsArr.join('\n') : '*Brak dobranych dodatków*';
-            
-            // Suma
-            const finalPrice = document.getElementById('priceDisplay').innerText;
-
-            const payload = {
-                embeds: [{
-                    title: "🚀 NOWE ZAMÓWIENIE HYPEROPT",
-                    color: 65280,
-                    fields: [
-                        { name: "👤 Klient (Discord)", value: `\`${discord}\``, inline: true },
-                        { name: "💻 Specyfikacja", value: `\`${specs}\``, inline: true },
-                        { name: "📦 Wybrany Pakiet", value: `**${pkgName}** (${pkgPrice} PLN)`, inline: false },
-                        { name: "🔌 Dodatki", value: addonsText, inline: false },
-                        { name: "💵 ŁĄCZNA KWOTA", value: `**${finalPrice}**`, inline: false },
-                        { name: "📝 Dodatkowe informacje", value: notes }
-                    ],
-                    timestamp: new Date()
-                }]
-            };
-
-            fetch(webhookUrl, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(payload)
-            }).then(response => {
-                if (response.ok) {
-                    alert('Zgłoszenie wysłane! Suma to ' + finalPrice + '. Oczekuj na kontakt na Discordzie.');
-                    document.getElementById('orderForm').reset();
-                    calculateTotal(); // resetuje cene
-                } else {
-                    alert('Błąd! Spróbuj ponownie.');
-                }
-            }).catch(err => {
-                alert('Błąd sieci.');
-            }).finally(() => {
-                btn.disabled = false;
-                btn.innerText = 'Wyślij Zgłoszenie';
-            });
+            fetch(url, { method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(payload) })
+            .then(r => { alert(r.ok ? 'Wysłano!' : 'Błąd!'); if(r.ok) { document.getElementById('orderForm').reset(); calc(); } })
+            .catch(() => alert('Błąd sieci.'))
+            .finally(() => { btn.innerText = 'WYŚLIJ ZGŁOSZENIE'; btn.disabled = false; });
         });
     </script>
 </body>
