@@ -7,7 +7,7 @@
     <style>
         :root { --bg: #0d0e12; --card: #161920; --acc: #00ffaa; --text: #f5f6f9; --mut: #8f9cae; }
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; scroll-behavior: smooth; }
-        body { background: var(--bg); color: var(--text); padding-bottom: 50px; overflow-x: hidden; }
+        body { background: var(--bg); color: var(--text); padding-bottom: 20px; overflow-x: hidden; }
         
         /* Nawigacja */
         .navbar { background: #000; padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #222; position: sticky; top: 0; z-index: 100; }
@@ -42,11 +42,19 @@
 
         /* Pakiety */
         .grid-3 { display: flex; gap: 25px; flex-wrap: wrap; justify-content: center; align-items: stretch; }
-        .pkg-card { background: var(--card); border-top: 4px solid var(--acc); padding: 40px 30px; border-radius: 10px; width: 340px; text-align: center; border: 1px solid #222; border-top: 4px solid var(--acc); display: flex; flex-direction: column; transition: 0.3s; }
+        
+        .pkg-card { background: var(--card); border-top: 4px solid var(--acc); padding: 40px 30px; border-radius: 10px; width: 340px; text-align: center; border: 1px solid #222; border-top: 4px solid var(--acc); display: flex; flex-direction: column; transition: 0.3s; position: relative; }
         .pkg-card:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0, 255, 170, 0.15); }
         .pkg-card h3 { font-size: 26px; margin-bottom: 10px; }
         .pkg-price { color: var(--acc); font-weight: bold; font-size: 24px; margin-bottom: 20px; text-shadow: 0 0 10px rgba(0,255,170,0.3); }
         .pkg-desc { font-size: 14px; color: #ccc; line-height: 1.7; text-align: left; flex-grow: 1; }
+
+        /* Wyróżnienie Pakietu Pro (Best Seller na dole karty) */
+        .pkg-pro { border-color: #ffd700; transform: scale(1.05); box-shadow: 0 0 20px rgba(255, 215, 0, 0.1); padding-bottom: 50px; z-index: 10;}
+        .pkg-pro:hover { transform: scale(1.08); box-shadow: 0 10px 30px rgba(255, 215, 0, 0.2); }
+        .pkg-pro h3 { color: #ffd700; text-shadow: 0 0 10px rgba(255,215,0,0.3); }
+        .pkg-pro .pkg-price { color: #ffd700; text-shadow: 0 0 10px rgba(255,215,0,0.4); }
+        .best-seller { position: absolute; bottom: 0; left: 0; width: 100%; background: #ffd700; color: #000; font-weight: 900; padding: 12px 0; border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; font-size: 15px; letter-spacing: 2px; text-transform: uppercase; }
 
         /* Dodatki */
         .addon-box { background: #111; border: 1px dashed var(--mut); padding: 20px; border-radius: 8px; text-align: center; width: 340px; font-size: 14px; }
@@ -84,10 +92,16 @@
         .total span { color: var(--acc); }
         .btn-submit { width: 100%; padding: 18px; background: var(--acc); color: #000; border: none; font-weight: bold; font-size: 16px; border-radius: 6px; cursor: pointer; text-transform: uppercase; transition: 0.2s; }
         .btn-submit:hover { background: #00e699; transform: translateY(-3px); box-shadow: 0 5px 20px rgba(0,255,170,0.4); }
+
+        /* Footer */
+        .footer { text-align: center; margin-top: 80px; padding: 40px 20px; border-top: 1px solid #222; color: var(--mut); font-size: 16px; }
+        .footer a { color: #5865F2; font-weight: bold; text-decoration: none; padding-left: 5px; transition: 0.2s; }
+        .footer a:hover { color: #4752C4; text-shadow: 0 0 10px rgba(88,101,242,0.4); }
     </style>
 </head>
 <body>
 
+    <!-- Nawigacja -->
     <nav class="navbar">
         <div class="logo-nav">Hyper<span>OPT</span></div>
         <div class="nav-links">
@@ -98,12 +112,14 @@
         </div>
     </nav>
 
+    <!-- Strona Główna / Hero -->
     <div class="hero reveal" id="home">
         <h1>Wyciskamy <span>MAX FPS</span> z Twojego PC</h1>
         <p>Liderzy profesjonalnej optymalizacji sprzętu i oprogramowania. Zmniejszamy input lag, obniżamy temperatury i gwarantujemy płynną rozgrywkę w każdej grze.</p>
         <button class="btn-big" onclick="openOrderModal()">Złóż zamówienie</button>
     </div>
 
+    <!-- Opinie (Ruszające się i "Ludzkie") -->
     <div class="section reveal">
         <div class="section-title">Opinie klientów (21)</div>
         <div class="reviews-container">
@@ -129,6 +145,7 @@
                     "Wszystko dziala jak nalezy, temperatury mniejsze o 15 stopni, dzieki wielkie."<br><br>- <i>Dawid</i>
                 </div>
                 
+                <!-- Kopia do pętli -->
                 <div class="rev-card">
                     <div class="stars">★★★★★</div>
                     "Mega różnica w klatkach, polecam każdemu! Zero lagów."<br><br>- <i>Mati</i>
@@ -153,27 +170,32 @@
         </div>
     </div>
 
+    <!-- Pakiety -->
     <div class="section reveal" id="pakiety">
         <div class="section-title">Nasze Pakiety</div>
         <div class="grid-3">
             <div class="pkg-card">
                 <h3>Pakiet Standard</h3>
-                <div class="pkg-price">40 PLN</div>
+                <div class="pkg-price">30 PLN</div>
                 <div class="pkg-desc">Wraz z nim otrzymujesz podstawową optymalizacje usunięcia telemetri windows czyszczenie plików temp i ogólne przyspieszenie systemu windows.</div>
             </div>
-            <div class="pkg-card">
+            
+            <div class="pkg-card pkg-pro">
                 <h3>Pakiet Pro</h3>
                 <div class="pkg-price">50 PLN</div>
                 <div class="pkg-desc">Otrzymujesz z tym pakietem cały pakiet standard Otrzymujesz specjalne ustawienia wiatraków komputera karty graficznej i procesora + darmowy dodatek optymalizacja pod kątem gier w które grasz.</div>
+                <div class="best-seller">Best Seller</div>
             </div>
+            
             <div class="pkg-card">
                 <h3>Pakiet Expert</h3>
-                <div class="pkg-price">80 PLN</div>
+                <div class="pkg-price">70 PLN</div>
                 <div class="pkg-desc">Wraz zakupem tego pakietu otrzymujesz pakiet pro i standart do tego pakietu otrzymujesz dodatkowo ustawienia do undervoltingu karty graficznej rozszerzona optymalizacja win10 / win11 + dodatkowo za darmo otrzymujesz aktualizacje sterowników podkręcenie ram i naprawienie twojego dowolnego problemu.</div>
             </div>
         </div>
     </div>
 
+    <!-- Dodatki -->
     <div class="section reveal">
         <div class="section-title">Opcjonalne Dodatki do pakietu</div>
         <div class="grid-3">
@@ -181,6 +203,7 @@
             <div class="addon-box"><b>10 PLN</b>Zainstalowanie z pomocą informatyka systemu który podwyższy FPS i zmniejszy nie potrzebne procesy</div>
             <div class="addon-box"><b>10 PLN</b>Format komputera i zrobienie głebokiej optymalizacji + wybrany pakiet</div>
             
+            <!-- Super Neonowy box czyszczenia -->
             <div class="neon-special">
                 <div class="neon-title">TWÓJ KOMPUTER ZWALNIA? MOŻE TRZEBA GO WYCZYŚCIĆ!</div>
                 <b style="display: block; text-align: center; color: var(--acc); font-size: 24px; margin-bottom: 10px; text-shadow: 0 0 8px var(--acc);">TYLKO 10 PLN</b> 
@@ -205,6 +228,12 @@
         </div>
     </div>
 
+    <!-- Stopka (Footer) -->
+    <div class="footer">
+        Masz pytania dotyczące pakietów, co robią itd? Śmiało pisz na nasz <a href="https://discord.gg/ybbsFvWnU" target="_blank">DISCORD !!</a>
+    </div>
+
+    <!-- MODAL - Wyskakujący Formularz Zamówienia -->
     <div id="orderModal" class="modal-overlay">
         <div class="form-container">
             <button class="close-form" onclick="closeOrderModal()">×</button>
@@ -215,12 +244,12 @@
                 <input type="text" id="specs" placeholder="Podaj sprzęt (np. i5-11400F, RTX 3060, 16GB RAM)" minlength="4" required>
                 
                 <select id="package" onchange="calc()">
-                    <option value="40" data-name="Pakiet Standard">Pakiet Standard - 40 PLN</option>
-                    <option value="50" data-name="Pakiet Pro">Pakiet Pro - 50 PLN</option>
-                    <option value="80" data-name="Pakiet Expert">Pakiet Expert - 80 PLN</option>
+                    <option value="30" data-name="Pakiet Standard">Pakiet Standard - 30 PLN</option>
+                    <option value="50" data-name="Pakiet Pro (BEST SELLER)">Pakiet Pro (BEST SELLER) - 50 PLN</option>
+                    <option value="70" data-name="Pakiet Expert">Pakiet Expert - 70 PLN</option>
                 </select>
 
-                <div style="margin-bottom: 12px; color: var(--mut); font-size: 14px; text-transform: uppercase; font-weight: bold;">Wybierz dodatki:</div>
+                <div style="margin-bottom: 12px; color: var(--mut); font-size: 15px; text-transform: uppercase; font-weight: bold;">Wybierz dodatki:</div>
                 <label class="check-row"><input type="checkbox" class="addon" value="45" data-name="Zaawansowana optymalizacja BIOS" onchange="calc()"> Zaawansowana optymalizacja BIOS (+45 PLN)</label>
                 <label class="check-row"><input type="checkbox" class="addon" value="10" data-name="Instalacja systemu FPS Boost" onchange="calc()"> System podwyższający FPS (+10 PLN)</label>
                 <label class="check-row"><input type="checkbox" class="addon" value="10" data-name="Format + Głęboka optymalizacja" onchange="calc()"> Format + Głęboka optymalizacja (+10 PLN)</label>
@@ -228,12 +257,13 @@
 
                 <textarea id="notes" placeholder="Opisz dodatkowy problem z komputerem (Opcjonalne)"></textarea>
 
-                <div class="total">RAZEM: <span id="totalPrice">40 PLN</span></div>
+                <div class="total">RAZEM: <span id="totalPrice">30 PLN</span></div>
                 <button type="submit" class="btn-submit">Generuj kod i złóż zamówienie</button>
             </form>
         </div>
     </div>
 
+    <!-- MODAL - Okienko z kodem po udanym zamówieniu -->
     <div id="successModal" class="modal-overlay">
         <div class="modal-content">
             <h2>Sukces!</h2>
