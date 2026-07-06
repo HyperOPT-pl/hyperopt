@@ -30,12 +30,12 @@
         
         /* Opinie (Karuzela CSS) */
         .reviews-container { overflow: hidden; width: 100%; position: relative; padding: 10px 0; }
-        .reviews-track { display: flex; gap: 20px; width: max-content; animation: scrollReviews 25s linear infinite; }
-        .reviews-track:hover { animation-play-state: paused; } /* Zatrzymuje karuzele po najechaniu myszką */
+        .reviews-track { display: flex; gap: 20px; width: max-content; animation: scrollReviews 25s linear infinite; will-change: transform; }
+        .reviews-track:hover { animation-play-state: paused; }
         
         @keyframes scrollReviews {
             0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); } /* Przesuwa o połowę, bo duplikujemy zawartość dla płynności */
+            100% { transform: translateX(-50%); } 
         }
         
         .rev-card { background: var(--card); padding: 20px; border-radius: 8px; border: 1px solid #222; width: 300px; font-size: 14px; line-height: 1.5; flex-shrink: 0; }
@@ -52,22 +52,22 @@
         .addon-box { background: #111; border: 1px dashed var(--mut); padding: 15px; border-radius: 8px; text-align: center; width: 300px; font-size: 13px; }
         .addon-box b { color: var(--acc); display: block; font-size: 16px; margin-bottom: 5px; }
 
-        /* Neonowe Czyszczenie */
+        /* Neonowe Czyszczenie - Wzmocnione */
         @keyframes neonPulse {
-            0% { box-shadow: 0 0 10px var(--acc), inset 0 0 5px var(--acc); border-color: var(--acc); }
-            50% { box-shadow: 0 0 25px var(--acc), inset 0 0 15px var(--acc); border-color: #fff; }
-            100% { box-shadow: 0 0 10px var(--acc), inset 0 0 5px var(--acc); border-color: var(--acc); }
+            0% { box-shadow: 0 0 15px var(--acc), inset 0 0 10px var(--acc); border-color: var(--acc); }
+            50% { box-shadow: 0 0 35px var(--acc), inset 0 0 20px var(--acc); border-color: #fff; }
+            100% { box-shadow: 0 0 15px var(--acc), inset 0 0 10px var(--acc); border-color: var(--acc); }
         }
         .neon-special {
             width: 100%; max-width: 620px; text-align: left;
-            background: rgba(0, 255, 170, 0.05);
-            border: 2px solid var(--acc);
+            background: rgba(0, 255, 170, 0.1);
+            border: 3px solid var(--acc);
             border-radius: 8px;
-            padding: 20px;
-            animation: neonPulse 2s infinite;
+            padding: 25px;
+            animation: neonPulse 1.5s infinite alternate;
         }
         .neon-title {
-            color: var(--acc); font-size: 22px; font-weight: bold; text-align: center; text-transform: uppercase; text-shadow: 0 0 10px var(--acc); margin-bottom: 10px;
+            color: #fff; font-size: 24px; font-weight: 900; text-align: center; text-transform: uppercase; text-shadow: 0 0 15px var(--acc); margin-bottom: 10px; letter-spacing: 1px;
         }
 
         /* Formularz */
@@ -94,7 +94,6 @@
 </head>
 <body>
 
-    <!-- Nawigacja -->
     <nav class="navbar">
         <div class="logo-nav">Hyper<span>OPT</span></div>
         <div class="nav-links">
@@ -105,19 +104,16 @@
         </div>
     </nav>
 
-    <!-- Strona Główna / Hero -->
     <div class="hero" id="home">
         <h1>Wyciskamy <span>MAX FPS</span> z Twojego PC</h1>
         <p>Liderzy profesjonalnej optymalizacji sprzętu i oprogramowania. Zmniejszamy input lag, obniżamy temperatury i gwarantujemy płynną rozgrywkę w każdej grze.</p>
         <button class="btn-big" onclick="document.getElementById('zamowienie').scrollIntoView()">Złóż zamówienie</button>
     </div>
 
-    <!-- Opinie (Ruszające się) -->
     <div class="section">
         <div class="section-title">Opinie zadowolonych klientów (21)</div>
         <div class="reviews-container">
             <div class="reviews-track">
-                <!-- Zestaw 1 -->
                 <div class="rev-card">
                     <div class="stars">★★★★★</div>
                     "Mega różnica w klatkach, polecam każdemu! Zero lagów."<br><br>- <i>Mati</i>
@@ -139,7 +135,6 @@
                     "Wgrali mi własny system, FPSy skoczyły o 40%. Polecam chłopaków!"<br><br>- <i>Kacper</i>
                 </div>
                 
-                <!-- Zestaw 2 (Kopia do płynnego zapętlenia) -->
                 <div class="rev-card">
                     <div class="stars">★★★★★</div>
                     "Mega różnica w klatkach, polecam każdemu! Zero lagów."<br><br>- <i>Mati</i>
@@ -164,29 +159,27 @@
         </div>
     </div>
 
-    <!-- Pakiety -->
     <div class="section" id="pakiety">
         <div class="section-title">Nasze Pakiety</div>
         <div class="grid-3">
             <div class="pkg-card">
                 <h3>Pakiet Standard</h3>
-                <div class="pkg-price">30 PLN</div>
+                <div class="pkg-price">40 PLN</div>
                 <div class="pkg-desc">Wraz z nim otrzymujesz podstawową optymalizacje usunięcia telemetri windows czyszczenie plików temp i ogólne przyspieszenie systemu windows.</div>
             </div>
             <div class="pkg-card">
                 <h3>Pakiet Pro</h3>
-                <div class="pkg-price">40 PLN</div>
+                <div class="pkg-price">50 PLN</div>
                 <div class="pkg-desc">Otrzymujesz z tym pakietem cały pakiet standard Otrzymujesz specjalne ustawienia wiatraków komputera karty graficznej i procesora + darmowy dodatek optymalizacja pod kątem gier w które grasz.</div>
             </div>
             <div class="pkg-card">
                 <h3>Pakiet Expert</h3>
-                <div class="pkg-price">70 PLN</div>
+                <div class="pkg-price">80 PLN</div>
                 <div class="pkg-desc">Wraz zakupem tego pakietu otrzymujesz pakiet pro i standart do tego pakietu otrzymujesz dodatkowo ustawienia do undervoltingu karty graficznej rozszerzona optymalizacja win10 / win11 + dodatkowo za darmo otrzymujesz aktualizacje sterowników podkręcenie ram i naprawienie twojego dowolnego problemu.</div>
             </div>
         </div>
     </div>
 
-    <!-- Dodatki -->
     <div class="section">
         <div class="section-title">Opcjonalne Dodatki do pakietu</div>
         <div class="grid-3">
@@ -194,13 +187,12 @@
             <div class="addon-box"><b>10 PLN</b>Zainstalowanie z pomocą informatyka systemu który podwyższy FPS i zmniejszy nie potrzebne procesy</div>
             <div class="addon-box"><b>10 PLN</b>Format komputera i zrobienie głebokiej optymalizacji + wybrany pakiet</div>
             
-            <!-- Neonowy box czyszczenia -->
             <div class="neon-special">
                 <div class="neon-title">TWÓJ KOMPUTER ZWALNIA? MOŻE TRZEBA GO WYCZYŚCIĆ!</div>
-                <b style="display: block; text-align: center; color: var(--text); font-size: 20px; margin-bottom: 10px;">TYLKO 10 PLN</b> 
-                <div style="text-align: center; margin-bottom: 15px; color: #ccc;">Zależnie od Twoich preferencji otrzymujesz plik, który wykona za ciebie czyszczenie komputera z telemetrii lub pełną pomoc informatyka.</div>
+                <b style="display: block; text-align: center; color: var(--acc); font-size: 22px; margin-bottom: 10px; text-shadow: 0 0 8px var(--acc);">TYLKO 10 PLN</b> 
+                <div style="text-align: center; margin-bottom: 15px; color: #eee; font-weight: 500;">Zależnie od Twoich preferencji otrzymujesz plik, który wykona za ciebie czyszczenie komputera z telemetrii lub pełną pomoc informatyka.</div>
                 
-                <details style="cursor: pointer; background: rgba(0,0,0,0.5); padding: 15px; border-radius: 5px; border: 1px solid #333;">
+                <details style="cursor: pointer; background: rgba(0,0,0,0.6); padding: 15px; border-radius: 5px; border: 1px solid #444;">
                     <summary style="color: var(--acc); font-weight: bold; outline: none; text-align: center; font-size: 15px;">Co jest dokładnie czyszczone? (KLIKNIJ, ABY ROZWINĄĆ)</summary>
                     <ul style="margin-top: 15px; margin-left: 20px; line-height: 1.6; color: #fff; font-size: 14px;">
                         <li>Czyszczenie plików tymczasowych i cache.</li>
@@ -222,7 +214,6 @@
         </div>
     </div>
 
-    <!-- Formularz Zamówienia -->
     <div class="section" id="zamowienie">
         <div class="section-title">Złóż Zamówienie</div>
         <div class="form-container">
@@ -231,9 +222,9 @@
                 <input type="text" id="specs" placeholder="Podaj sprzęt (np. i5-11400F, RTX 3060, 16GB RAM)" required>
                 
                 <select id="package" onchange="calc()">
-                    <option value="30" data-name="Pakiet Standard">Pakiet Standard - 30 PLN</option>
-                    <option value="40" data-name="Pakiet Pro">Pakiet Pro - 40 PLN</option>
-                    <option value="70" data-name="Pakiet Expert">Pakiet Expert - 70 PLN</option>
+                    <option value="40" data-name="Pakiet Standard">Pakiet Standard - 40 PLN</option>
+                    <option value="50" data-name="Pakiet Pro">Pakiet Pro - 50 PLN</option>
+                    <option value="80" data-name="Pakiet Expert">Pakiet Expert - 80 PLN</option>
                 </select>
 
                 <div style="margin-bottom: 10px; color: var(--mut); font-size: 14px; text-transform: uppercase; font-weight: bold;">Wybierz dodatki:</div>
@@ -242,13 +233,12 @@
                 <label class="check-row"><input type="checkbox" class="addon" value="10" data-name="Format + Głęboka optymalizacja" onchange="calc()"> Format + Głęboka optymalizacja (+10 PLN)</label>
                 <label class="check-row"><input type="checkbox" class="addon" value="10" data-name="Skrypt czyszczący / Pomoc informatyka" onchange="calc()"> Skrypt czyszczący z telemetrii / Pomoc (+10 PLN)</label>
 
-                <div class="total">RAZEM: <span id="totalPrice">30 PLN</span></div>
+                <div class="total">RAZEM: <span id="totalPrice">40 PLN</span></div>
                 <button type="submit" class="btn-submit">Generuj kod i złóż zamówienie</button>
             </form>
         </div>
     </div>
 
-    <!-- Wyskakujące okienko (Modal) generujące kod -->
     <div id="successModal" class="modal-overlay">
         <div class="modal-content">
             <h2>Sukces!</h2>
