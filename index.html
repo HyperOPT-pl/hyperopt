@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HyperOPT | Profesjonalna Optymalizacja PC</title>
+    <style>
+        :root {
+            --bg-color: #0d0e12;
+            --card-bg: #161920;
+            --accent: #00ffaa;
+            --accent-glow: rgba(0, 255, 170, 0.3);
+            --text: #f5f6f9;
+            --text-muted: #8f9cae;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Roboto, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .wrapper {
+            max-width: 450px;
+            width: 100%;
+        }
+
+        /* Styl Karty Głównej */
+        .card {
+            background: var(--card-bg);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-top: 4px solid var(--accent);
+            border-radius: 12px;
+            padding: 40px 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            text-align: center;
+        }
+
+        .logo {
+            font-size: 32px;
+            font-weight: 800;
+            letter-spacing: 2px;
+            color: var(--text);
+            text-transform: uppercase;
+            margin-bottom: 5px;
+        }
+
+        .logo span {
+            color: var(--accent);
+            text-shadow: 0 0 10px var(--accent-glow);
+        }
+
+        .tagline {
+            color: var(--text-muted);
+            font-size: 14px;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Statystyki / Atuty */
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 30px;
+            background: rgba(0, 0, 0, 0.2);
+            padding: 15px 10px;
+            border-radius: 8px;
+        }
+
+        .stat-item-val {
+            color: var(--accent);
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        .stat-item-lbl {
+            font-size: 11px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+        }
+
+        /* Formularz */
+        .form-group {
+            text-align: left;
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            font-size: 12px;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-bottom: 8px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 14px;
+            background: #090a0d;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 6px;
+            color: #fff;
+            font-size: 14px;
+            transition: all 0.2s ease;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 8px var(--accent-glow);
+        }
+
+        textarea {
+            resize: none;
+            height: 80px;
+        }
+
+        button {
+            width: 100%;
+            padding: 16px;
+            background: var(--accent);
+            color: #000;
+            border: none;
+            border-radius: 6px;
+            font-size: 15px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px var(--accent-glow);
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background: #00e699;
+            box-shadow: 0 6px 20px var(--accent-glow);
+            transform: translateY(-2px);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        .footer {
+            margin-top: 20px;
+            font-size: 11px;
+            color: var(--text-muted);
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="wrapper">
+        <div class="card">
+            <div class="logo">Hyper<span>OPT</span></div>
+            <div class="tagline">Maximum FPS & Lowest Latency</div>
+
+            <div class="stats">
+                <div>
+                    <div class="stat-item-val">+30%</div>
+                    <div class="stat-item-lbl">FPS Boost</div>
+                </div>
+                <div>
+                    <div class="stat-item-val">-15ms</div>
+                    <div class="stat-item-lbl">Input Lag</div>
+                </div>
+                <div>
+                    <div class="stat-item-val">100%</div>
+                    <div class="stat-item-lbl">Stability</div>
+                </div>
+            </div>
+
+            <form id="orderForm">
+                <div class="form-group">
+                    <label for="discord">Nazwa użytkownika Discord</label>
+                    <input type="text" id="discord" placeholder="np. adrian_opt" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="specs">Specyfikacja PC (CPU, GPU, RAM)</label>
+                    <input type="text" id="specs" placeholder="np. i7-13620H, RTX 4070, 32GB RAM" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="service">Wybierz pakiet optymalizacji</label>
+                    <select id="service">
+                        <option value="Undervolting & BIOS Tuning">Undervolting & Advanced BIOS Tuning</option>
+                        <option value="Custom OS Setup (AtlasOS/Revios)">Custom OS Setup (Atlas/ReviOS)</option>
+                        <option value="Full Optimization (OS + Hardware)">Pełna Paczka (Sprzęt + System)</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="notes">Dodatkowe uwagi / Główne problemy</label>
+                    <textarea id="notes" placeholder="np. Spadki klatek w Minecraft, wysokie temperatury..."></textarea>
+                </div>
+
+                <button type="submit">Wyślij Zgłoszenie</button>
+            </form>
+        </div>
+        <div class="footer">&copy; 2026 HyperOPT Services. Wszelkie prawa zastrzeżone.</div>
+    </div>
+
+    <script>
+        document.getElementById('orderForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const btn = e.target.querySelector('button');
+            btn.disabled = true;
+            btn.innerText = 'Wysyłanie...';
+
+            const webhookUrl = 'https://discord.com/api/webhooks/1523617715477020742/IvljwYTbNDMhp4G-BsT0jCD06a5wLj2P782M39VTj6Aoi64HHb5Oxl_xlPEFxMpw36CN';
+            
+            const discord = document.getElementById('discord').value;
+            const specs = document.getElementById('specs').value;
+            const service = document.getElementById('service').value;
+            const notes = document.getElementById('notes').value || 'Brak uwag';
+
+            const payload = {
+                embeds: [{
+                    title: "🚀 NOWE ZAMÓWIENIE HYPEROPT",
+                    color: 65280, // Zielony kolor paska
+                    fields: [
+                        { name: "👤 Klient (Discord)", value: `\`${discord}\``, inline: true },
+                        { name: "💻 Specyfikacja", value: `\`${specs}\``, inline: true },
+                        { name: "🛠️ Wybrana usługa", value: `**${service}**` },
+                        { name: "📝 Dodatkowe informacje", value: notes }
+                    ],
+                    timestamp: new Date()
+                }]
+            };
+
+            fetch(webhookUrl, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            }).then(response => {
+                if (response.ok) {
+                    alert('Zgłoszenie zostało pomyślnie wysłane! Oczekuj na kontakt na Discordzie.');
+                    document.getElementById('orderForm').reset();
+                } else {
+                    alert('Wystąpił błąd podczas wysyłania. Spróbuj ponownie.');
+                }
+            }).catch(err => {
+                alert('Błąd sieci. Sprawdź połączenie.');
+            }).finally(() => {
+                btn.disabled = false;
+                btn.innerText = 'Wyślij Zgłoszenie';
+            });
+        });
+    </script>
+</body>
+</html>
